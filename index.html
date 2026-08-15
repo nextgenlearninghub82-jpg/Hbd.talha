@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Talha Janu 🎂</title>
+
+<title>Happy Birthday Talha Janu ❤️</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700;800&display=swap');
@@ -14,71 +15,101 @@
     box-sizing:border-box;
 }
 
+html,body{
+    width:100%;
+    height:100%;
+}
+
 body{
-    min-height:100vh;
     overflow:hidden;
-    font-family:'Poppins',sans-serif;
-    color:white;
-    background:linear-gradient(135deg,#ff416c,#8e2de2,#00c6ff,#f7971e);
-    background-size:400% 400%;
-    animation:bgMove 12s ease infinite;
+    font-family:Poppins,sans-serif;
+    color:#fff;
+    background:linear-gradient(135deg,#ff416c,#7f00ff,#00c6ff,#ff9a00);
+    background-size:500% 500%;
+    animation:bg 12s ease infinite;
 }
 
-@keyframes bgMove{
-    0%{background-position:0% 50%}
+@keyframes bg{
+    0%{background-position:0 50%}
     50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    100%{background-position:0 50%}
 }
 
-/* Animated background */
-.bg-item{
+/* ================= FLOATING BACKGROUND ================= */
+
+#floatingBackground{
     position:fixed;
-    z-index:0;
+    inset:0;
+    overflow:hidden;
     pointer-events:none;
-    opacity:.7;
+    z-index:1;
+}
+
+.float{
+    position:absolute;
+    bottom:-80px;
     animation:floatUp linear infinite;
+    opacity:.75;
 }
 
 @keyframes floatUp{
     0%{
-        transform:translateY(110vh) rotate(0deg);
+        transform:translateY(0) rotate(0);
         opacity:0;
     }
-    15%{opacity:.8}
-    85%{opacity:.8}
+
+    10%{
+        opacity:.8;
+    }
+
+    90%{
+        opacity:.8;
+    }
+
     100%{
-        transform:translateY(-15vh) rotate(360deg);
+        transform:translateY(-120vh) rotate(360deg);
         opacity:0;
     }
 }
 
-.bg-text{
+/* Permanent background text */
+
+.wished{
     position:fixed;
-    top:25px;
-    left:0;
+    top:20px;
     width:100%;
     text-align:center;
-    z-index:2;
+    z-index:50;
     font-family:Pacifico,cursive;
-    font-size:18px;
-    text-shadow:0 0 12px rgba(255,255,255,.8);
-    animation:pulse 2s infinite;
+    font-size:17px;
+    color:white;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 15px #ff69b4,
+        0 0 25px #00ffff;
+    animation:textGlow 2s infinite alternate;
 }
 
-@keyframes pulse{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.05)}
+@keyframes textGlow{
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.06);
+    }
 }
+
+/* ================= MAIN ================= */
 
 .container{
     position:relative;
-    z-index:3;
-    min-height:100vh;
-    width:100%;
+    z-index:10;
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:70px 18px 30px;
+    padding:65px 15px 30px;
 }
 
 .step{
@@ -87,314 +118,514 @@ body{
     max-height:82vh;
     overflow-y:auto;
     text-align:center;
-    padding:35px 25px;
-    border-radius:30px;
-    background:rgba(0,0,0,.25);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,.35);
-    box-shadow:0 20px 60px rgba(0,0,0,.3);
-    animation:stepIn .7s ease;
+    padding:35px 25px 30px;
+
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.4);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        inset 0 0 30px rgba(255,255,255,.08);
+
+    animation:appear .8s ease;
 }
 
 .step.active{
     display:block;
 }
 
-@keyframes stepIn{
+@keyframes appear{
     from{
         opacity:0;
-        transform:scale(.75) translateY(40px);
+        transform:scale(.7) rotateX(20deg);
     }
+
     to{
         opacity:1;
-        transform:scale(1) translateY(0);
+        transform:scale(1) rotateX(0);
     }
 }
 
 .step::-webkit-scrollbar{
     width:5px;
 }
+
 .step::-webkit-scrollbar-thumb{
-    background:rgba(255,255,255,.5);
+    background:#fff;
     border-radius:20px;
 }
 
-h1{
-    font-family:Pacifico,cursive;
-    font-size:clamp(30px,7vw,55px);
-    margin-bottom:18px;
-    text-shadow:0 5px 15px rgba(0,0,0,.3);
-}
+/* ================= HEART BOX ================= */
 
-h2{
-    font-size:28px;
-    margin-bottom:20px;
+.heartBox{
+    position:relative;
+    margin:20px auto;
+    width:min(500px,90%);
+    min-height:260px;
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,60,130,.8),
+        rgba(130,30,255,.8)
+    );
+
+    padding:70px 35px 50px;
+
+    filter:drop-shadow(0 15px 25px rgba(0,0,0,.35));
+
+    clip-path:path(
+        "M250 450 C220 420 40 300 40 150 C40 30 190 0 250 100 C310 0 460 30 460 150 C460 300 280 420 250 450 Z"
+    );
 }
 
 .message{
-    font-size:17px;
+    position:relative;
+    z-index:2;
+    font-size:16px;
     line-height:1.8;
     font-weight:500;
 }
 
-.emoji{
-    font-size:38px;
-    margin:15px 0;
+h1{
+    font-family:Pacifico,cursive;
+    font-size:clamp(32px,7vw,58px);
+    margin-bottom:15px;
+    text-shadow:0 5px 20px rgba(0,0,0,.4);
 }
 
+h2{
+    margin-bottom:15px;
+}
+
+.emoji{
+    font-size:38px;
+    margin:10px;
+}
+
+/* ================= BUTTON ================= */
+
 .next{
-    margin-top:25px;
     border:none;
-    padding:13px 28px;
+    padding:14px 30px;
+    margin-top:20px;
+
     border-radius:50px;
-    color:white;
+
+    color:#fff;
     font-size:16px;
-    font-weight:700;
+    font-weight:800;
+
     cursor:pointer;
-    background:linear-gradient(45deg,#ff0080,#7928ca);
-    box-shadow:0 8px 25px rgba(0,0,0,.3);
+
+    background:linear-gradient(
+        45deg,
+        #ff0080,
+        #7928ca,
+        #00c6ff
+    );
+
+    background-size:200%;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.35),
+        0 0 15px rgba(255,255,255,.2);
+
     transition:.3s;
+
+    animation:buttonGlow 2s infinite alternate;
+}
+
+@keyframes buttonGlow{
+    from{
+        box-shadow:0 5px 15px rgba(0,0,0,.3);
+    }
+
+    to{
+        box-shadow:
+        0 5px 30px rgba(255,255,255,.5);
+    }
 }
 
 .next:hover{
     transform:scale(1.08);
-    box-shadow:0 10px 35px rgba(255,255,255,.3);
 }
 
-/* 3D Gift */
-.gift-area{
-    margin:30px auto;
-    width:180px;
-    height:180px;
-    position:relative;
+.next:active{
+    transform:scale(.92);
+}
+
+/* ================= 3D GIFT ================= */
+
+.giftArea{
+    width:200px;
+    height:190px;
+    margin:25px auto;
     perspective:700px;
 }
 
 .gift{
-    position:absolute;
-    width:130px;
-    height:110px;
-    left:25px;
-    top:45px;
+    position:relative;
+    width:140px;
+    height:120px;
+    margin:auto;
     transform-style:preserve-3d;
-    animation:giftFloat 2s infinite ease-in-out;
+    animation:giftMove 2s infinite ease-in-out;
 }
 
-@keyframes giftFloat{
-    0%,100%{transform:translateY(0) rotateY(-8deg)}
-    50%{transform:translateY(-15px) rotateY(8deg)}
+@keyframes giftMove{
+    0%,100%{
+        transform:translateY(0) rotateY(-8deg);
+    }
+
+    50%{
+        transform:translateY(-15px) rotateY(8deg);
+    }
 }
 
-.box{
+.giftBox{
     position:absolute;
-    width:130px;
-    height:100px;
     bottom:0;
-    background:linear-gradient(135deg,#ff1744,#ff4081);
-    border-radius:5px;
-    box-shadow:0 15px 30px rgba(0,0,0,.35);
+    width:140px;
+    height:100px;
+
+    background:linear-gradient(
+        135deg,
+        #ff1744,
+        #ff4081
+    );
+
+    box-shadow:0 15px 30px rgba(0,0,0,.4);
 }
 
-.box:before{
+.giftBox:before{
     content:"";
     position:absolute;
-    left:53px;
-    width:25px;
+    left:57px;
+    width:27px;
     height:100%;
     background:#ffd700;
 }
 
-.lid{
+.giftLid{
     position:absolute;
-    width:145px;
-    height:28px;
-    left:-7px;
-    top:-18px;
-    background:linear-gradient(135deg,#ff4081,#ff1744);
-    border-radius:5px;
-    box-shadow:0 8px 15px rgba(0,0,0,.3);
+    top:5px;
+    left:-8px;
+
+    width:156px;
+    height:30px;
+
+    background:#ff4081;
+
+    box-shadow:0 8px 15px rgba(0,0,0,.4);
 }
 
-.lid:before{
+.giftLid:before{
     content:"";
     position:absolute;
-    left:60px;
-    width:25px;
-    height:28px;
+    left:64px;
+    width:27px;
+    height:30px;
     background:#ffd700;
 }
 
-.ribbon{
-    position:absolute;
-    left:48px;
-    top:-45px;
-    width:40px;
-    height:35px;
-}
+/* ================= CAKE ================= */
 
-.ribbon:before,
-.ribbon:after{
-    content:"";
-    position:absolute;
-    width:32px;
-    height:22px;
-    border:7px solid #ffd700;
-    border-radius:50%;
-}
-
-.ribbon:before{
-    left:-20px;
-    transform:rotate(25deg);
-}
-
-.ribbon:after{
-    right:-20px;
-    transform:rotate(-25deg);
-}
-
-.open-btn{
-    margin-top:10px;
-    background:linear-gradient(45deg,#ffd700,#ff7b00);
-    color:#4b2100;
-}
-
-/* Cake */
-.cake{
+.cakeScene{
+    width:300px;
+    height:300px;
+    margin:15px auto;
     position:relative;
-    width:250px;
-    height:230px;
-    margin:20px auto;
 }
 
-.layer{
+.cake{
     position:absolute;
-    left:25px;
-    width:200px;
-    height:60px;
-    border-radius:15px;
-    background:linear-gradient(#ff9a9e,#fad0c4);
-    box-shadow:0 10px 20px rgba(0,0,0,.3);
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+    width:220px;
+    height:130px;
 }
 
-.layer.one{bottom:20px}
-.layer.two{
-    bottom:70px;
-    left:40px;
-    width:170px;
+.cakeLayer{
+    position:absolute;
+    left:0;
+    width:220px;
+    height:60px;
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        #ff9a9e,
+        #fad0c4
+    );
+
+    box-shadow:
+    0 12px 25px rgba(0,0,0,.35);
 }
-.layer.three{
-    bottom:120px;
-    left:58px;
-    width:134px;
+
+.layerBottom{
+    bottom:0;
+}
+
+.layerTop{
+    bottom:48px;
+    width:180px;
+    left:20px;
+}
+
+.icing{
+    position:absolute;
+    bottom:90px;
+    left:45px;
+
+    width:130px;
+    height:35px;
+
+    background:#fff;
+    border-radius:20px;
+
+    box-shadow:0 0 20px rgba(255,255,255,.8);
 }
 
 .candle{
     position:absolute;
-    bottom:180px;
-    width:12px;
+    bottom:120px;
+    width:13px;
     height:45px;
-    border-radius:4px;
-    background:linear-gradient(90deg,#fff,#ff69b4,#fff);
+    border-radius:5px;
+
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #ff69b4,
+        #fff
+    );
 }
 
-.c1{left:72px}
-.c2{left:108px}
-.c3{left:144px}
-.c4{left:180px}
+.candle:nth-child(1){left:65px}
+.candle:nth-child(2){left:100px}
+.candle:nth-child(3){left:135px}
+.candle:nth-child(4){left:170px}
 
 .flame{
     position:absolute;
     top:-22px;
     left:1px;
-    width:11px;
+
+    width:12px;
     height:20px;
+
     background:#ffd700;
-    border-radius:50% 50% 50% 50%;
-    box-shadow:0 0 18px #ff9800;
-    animation:flame 0.7s infinite alternate;
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 15px #ff9800,
+    0 0 30px #ff5722;
+
+    animation:flame .5s infinite alternate;
 }
 
 @keyframes flame{
-    from{transform:scale(.8) rotate(-5deg)}
-    to{transform:scale(1.2) rotate(5deg)}
+    from{
+        transform:scale(.8) rotate(-5deg);
+    }
+
+    to{
+        transform:scale(1.2) rotate(5deg);
+    }
+}
+
+/* ================= KNIFE ================= */
+
+.knife{
+    position:absolute;
+    width:140px;
+    height:15px;
+
+    background:linear-gradient(
+        90deg,
+        #333,
+        #eee,
+        #fff
+    );
+
+    right:5px;
+    top:115px;
+
+    transform-origin:left center;
+
+    animation:cutCake 2.5s infinite ease-in-out;
+}
+
+.knife:after{
+    content:"";
+    position:absolute;
+    right:-35px;
+    top:-6px;
+
+    width:40px;
+    height:27px;
+
+    border-radius:8px;
+
+    background:#222;
+}
+
+@keyframes cutCake{
+
+    0%,100%{
+        transform:rotate(-25deg) translateX(20px);
+    }
+
+    45%{
+        transform:rotate(25deg) translateX(-80px);
+    }
+
+    60%{
+        transform:rotate(25deg) translateX(-80px);
+    }
 }
 
 .age{
     position:absolute;
-    bottom:-5px;
+    bottom:0;
     width:100%;
-    font-size:48px;
-    font-weight:900;
+
     font-family:Pacifico,cursive;
-    text-shadow:0 4px 10px rgba(0,0,0,.4);
+    font-size:55px;
+
+    text-shadow:
+    0 5px 15px rgba(0,0,0,.5);
 }
 
-.final-title{
+/* ================= DEVELOPER ================= */
+
+.developer{
+    padding:20px;
+}
+
+.devName{
     font-family:Pacifico,cursive;
-    font-size:clamp(35px,8vw,65px);
-    background:linear-gradient(90deg,#fff,#ffd700,#fff,#ff69b4);
+    font-size:36px;
+
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #ffd700,
+        #ff69b4,
+        #00ffff
+    );
+
     background-size:300%;
+
     -webkit-background-clip:text;
     color:transparent;
+
     animation:shine 3s linear infinite;
 }
 
 @keyframes shine{
-    to{background-position:300%}
+    to{
+        background-position:300%;
+    }
 }
 
-.dev{
-    margin-top:25px;
-    font-family:Pacifico,cursive;
-    font-size:28px;
-    animation:pulse 2s infinite;
-}
-
-.thank{
+.hacker{
+    margin-top:10px;
     font-size:24px;
-    margin-top:20px;
-    font-weight:bold;
+    letter-spacing:5px;
+    font-weight:900;
 }
+
+.social{
+    margin:12px;
+    font-size:17px;
+}
+
+/* ================= END ================= */
+
+.endScreen{
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    z-index:100;
+
+    background:
+    radial-gradient(
+        circle,
+        #ff1493,
+        #6a00ff,
+        #020024
+    );
+}
+
+.endScreen.show{
+    display:flex;
+    animation:appear 1s ease;
+}
+
+.endTitle{
+    font-family:Pacifico,cursive;
+    font-size:clamp(45px,10vw,80px);
+
+    text-shadow:
+    0 0 15px #fff,
+    0 0 35px #ff69b4;
+}
+
+.endText{
+    margin-top:20px;
+    font-size:20px;
+}
+
+/* progress */
 
 .progress{
     position:fixed;
-    z-index:10;
     bottom:12px;
     left:50%;
+
     transform:translateX(-50%);
-    font-size:13px;
-    background:rgba(0,0,0,.3);
-    padding:7px 16px;
+
+    z-index:80;
+
+    padding:7px 18px;
+
     border-radius:30px;
+
+    background:rgba(0,0,0,.35);
+
+    font-size:13px;
 }
 
-/* Different visual themes */
-.theme1{background:linear-gradient(135deg,#ff416c,#ff4b2b)}
-.theme2{background:linear-gradient(135deg,#8e2de2,#4a00e0)}
-.theme3{background:linear-gradient(135deg,#00c6ff,#0072ff)}
-.theme4{background:linear-gradient(135deg,#f953c6,#b91d73)}
-.theme5{background:linear-gradient(135deg,#f7971e,#ffd200)}
-.theme6{background:linear-gradient(135deg,#11998e,#38ef7d)}
-.theme7{background:linear-gradient(135deg,#fc5c7d,#6a82fb)}
-.theme8{background:linear-gradient(135deg,#654ea3,#eaafc8)}
-.theme9{background:linear-gradient(135deg,#00b09b,#96c93d)}
-.theme10{background:linear-gradient(135deg,#ff512f,#dd2476)}
-.theme11{background:linear-gradient(135deg,#1d2b64,#f8cdda)}
-.theme12{background:linear-gradient(135deg,#42275a,#734b6d)}
-.theme13{background:linear-gradient(135deg,#141e30,#243b55)}
-
 @media(max-width:500px){
+
     .step{
-        padding:28px 18px;
+        padding:25px 15px;
         max-height:80vh;
     }
 
-    .message{
-        font-size:15px;
-        line-height:1.7;
+    .heartBox{
+        padding:60px 25px 45px;
     }
 
-    .gift-area{
+    .message{
+        font-size:14px;
+    }
+
+    .giftArea{
         transform:scale(.85);
     }
 }
@@ -403,411 +634,1018 @@ h2{
 
 <body>
 
-<div class="bg-text">From ASAD UR RAHMAN ❤</div>
+<!-- FLOATING WISHED TEXT -->
+<div class="wished">
+    Wished by : MR ASAD ❤️
+</div>
 
-<div id="background"></div>
+<!-- BACKGROUND FLOATING ITEMS -->
+<div id="floatingBackground"></div>
 
+<!-- MAIN WEBSITE -->
 <div class="container">
 
 <!-- STEP 1 -->
-<section class="step active theme1">
-    <div class="emoji">🎁✨🎈</div>
-    <h1>Happy Birthday<br>Talha Janu 😘</h1>
 
-    <div class="gift-area">
+<section class="step active">
+
+    <div class="emoji">🎁✨🎈</div>
+
+    <h1>
+        Happy Birthday<br>
+        Talha Janu 😘❤️
+    </h1>
+
+    <div class="giftArea">
+
         <div class="gift">
-            <div class="ribbon"></div>
-            <div class="lid"></div>
-            <div class="box"></div>
+
+            <div class="giftLid"></div>
+
+            <div class="giftBox"></div>
+
         </div>
+
     </div>
 
-    <button class="next open-btn" onclick="nextStep()">
+    <button class="next celebrate"
+            onclick="nextStep()">
+
         🎁 Open Talha Latif 🎁
+
     </button>
+
 </section>
+
 
 <!-- STEP 2 -->
-<section class="step theme2">
+
+<section class="step">
+
     <div class="emoji">😂🎂🤣</div>
+
     <h1>Happy Birthday Talha! 🎉</h1>
-    <p class="message">
+
+    <div class="heartBox">
+
+        <p class="message">
+
         Wow, you actually survived another year without failing at life,
         I'm impressed. 😂 My best friend from school life who still thinks
-        he's the smartest in class. Anyway, enjoy getting older, wiser?
-        Not really. 😭😂 Have a great day, you old legend! 👑🎂
-    </p>
-    <button class="next" onclick="nextStep()">Next Surprise ➜</button>
+        he's the smartest in class.
+
+        Anyway, enjoy getting older, wiser?
+        Not really. 😭😂
+
+        Have a great day, you old legend! 👑🎂
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        Next Surprise ➜
+
+    </button>
+
 </section>
+
 
 <!-- STEP 3 -->
-<section class="step theme3">
+
+<section class="step">
+
     <div class="emoji">📚😂💇‍♂️🎂</div>
+
     <h1>School Memories 😎</h1>
-    <p class="message">
-        Happy Birthday Talha! From copying homework in school to copying my
-        hairstyle, you never stopped. 😂 My best friend, my partner in crime,
-        my permanent headache. 🤦‍♂️😂 May your birthday cake be bigger than
-        your lies about doing homework. 🎂 Let's party like school bunk days!
-        🥳🔥
-    </p>
-    <button class="next" onclick="nextStep()">Next Memory ➜</button>
+
+    <div class="heartBox">
+
+        <p class="message">
+
+        Happy Birthday Talha! 🎉
+
+        From copying homework in school to copying my hairstyle,
+        you never stopped. 😂
+
+        My best friend, my partner in crime,
+        my permanent headache. 🤦‍♂️😂
+
+        May your birthday cake be bigger than your lies about doing homework.
+        🎂
+
+        Let's party like school bunk days! 🥳🔥
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        Next Memory ➜
+
+    </button>
+
 </section>
+
 
 <!-- STEP 4 -->
-<section class="step theme4">
+
+<section class="step">
+
     <div class="emoji">📖❤️✨</div>
+
     <h1>Our Old Diary 📖</h1>
-    <p class="message">
-        Happy Birthday Talha. Like an old school diary, our friendship is
-        faded but still beautiful. ❤️ You were my first best friend, my first
-        bench partner, my forever person. 🤝 On your special day, I wish time
-        slows down for you and brings only soft, happy moments. 🌸✨
-    </p>
-    <button class="next" onclick="nextStep()">Next Memory ➜</button>
+
+    <div class="heartBox">
+
+        <p class="message">
+
+        Happy Birthday Talha. ❤️
+
+        Like an old school diary, our friendship is faded but still beautiful.
+
+        You were my first best friend,
+        my first bench partner,
+        my forever person. 🤝
+
+        On your special day, I wish time slows down for you
+        and brings only soft, happy moments. 🌸✨
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        Next Memory ➜
+
+    </button>
+
 </section>
+
 
 <!-- STEP 5 -->
-<section class="step theme5">
+
+<section class="step">
+
     <div class="emoji">🤣🎂🤑</div>
-    <h1>Still A Kid! 😂</h1>
-    <p class="message">
-        Happy Birthday to my school life best friend Talha, who still hasn't
-        grown up since 5th class. 😂 Same face, same lame jokes, just more age.
+
+    <h1>Still A Kid 😂</h1>
+
+    <div class="heartBox">
+
+        <p class="message">
+
+        Happy Birthday to my school life best friend Talha,
+        who still hasn't grown up since 5th class. 😂
+
+        Same face, same lame jokes,
+        just more age.
+
         Thanks for being my best friend even though you are annoying. 😭😂
-        Now treat me, you are getting older and richer, right? 💰🎂
-    </p>
-    <button class="next" onclick="nextStep()">Next Wish ➜</button>
+
+        Now treat me,
+        you are getting older and richer, right? 💰🎂
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        Next Wish ➜
+
+    </button>
+
 </section>
+
 
 <!-- STEP 6 -->
-<section class="step theme6">
+
+<section class="step">
+
     <div class="emoji">❤️🤝🌟</div>
+
     <h1>For My Best Friend ❤️</h1>
-    <p class="message">
-        Wishing you a very Happy Birthday, Talha. 🎂 As my best friend since
-        school life, you hold a very special place in my heart. ❤️ Your loyalty
-        and kindness have always inspired me. May this coming year bring you
-        great achievements, good health, and immense joy. 🌟🤲
-    </p>
-    <button class="next" onclick="nextStep()">Next Memory ➜</button>
+
+    <div class="heartBox">
+
+        <p class="message">
+
+        Wishing you a very Happy Birthday, Talha. 🎂
+
+        As my best friend since school life,
+        you hold a very special place in my heart. ❤️
+
+        Your loyalty and kindness have always inspired me.
+
+        May this coming year bring you great achievements,
+        good health, and immense joy. 🌟🤲
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        Next Memory ➜
+
+    </button>
+
 </section>
+
 
 <!-- STEP 7 -->
-<section class="step theme7">
+
+<section class="step">
+
     <div class="emoji">🏫🍱😂❤️</div>
+
     <h1>Golden School Days 🥹</h1>
-    <p class="message">
-        Happy Birthday Talha! Remember school assembly, stolen tiffins,
-        punishment together, and laughing for no reason? 😂 That was us.
-        My best friend from those golden days to now. ❤️ I miss those days
-        but I'm glad I still have you. Stay the same, stay blessed, my brother.
-        🤲💙
-    </p>
-    <button class="next" onclick="nextStep()">Next Vibe ➜</button>
+
+    <div class="heartBox">
+
+        <p class="message">
+
+        Happy Birthday Talha! 🎉
+
+        Remember school assembly,
+        stolen tiffins,
+        punishment together,
+        and laughing for no reason? 😂
+
+        That was us.
+
+        My best friend from those golden days to now. ❤️
+
+        I miss those days but I'm glad I still have you.
+
+        Stay the same,
+        stay blessed, my brother. 🤲💙
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        Next Memory ➜
+
+    </button>
+
 </section>
+
 
 <!-- STEP 8 -->
-<section class="step theme8">
+
+<section class="step">
+
     <div class="emoji">🔥😎🎂💯</div>
+
     <h1>HBD Talha FR! 🔥</h1>
-    <p class="message">
-        HBD Talha fr! My day-one from school life, my OG. 😎 No cap, you're the
-        realest best friend ever. From school corridors to life goals, we
-        locked in. 🔥 Keep slaying, keep shining, keep being you.
-        Big cake, big vibes, big party today. 🎂🥳 Let's gooo! 🚀
-    </p>
-    <button class="next" onclick="nextStep()">Next Level ➜</button>
+
+    <div class="heartBox">
+
+        <p class="message">
+
+        HBD Talha fr! 🎂
+
+        My day-one from school life,
+        my OG. 😎
+
+        No cap, you're the realest best friend ever.
+
+        From school corridors to life goals,
+        we locked in. 🔥
+
+        Keep slaying,
+        keep shining,
+        keep being you.
+
+        Big cake, big vibes,
+        big party today.
+
+        Let's gooo! 🚀🥳
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        Next Level ➜
+
+    </button>
+
 </section>
+
 
 <!-- STEP 9 -->
-<section class="step theme9">
+
+<section class="step">
+
     <div class="emoji">🚀🌟❤️</div>
-    <h1>Keep Rising, Brother! 🤝</h1>
-    <p class="message">
-        Happy Birthday Talha! My best friend from school life who taught me
-        how to never give up. ❤️ You have grown so much, and I'm so proud of
-        you. This year is yours, chase your dreams harder. 🚀 May success
-        follow you everywhere. Keep rising, my brother! 🌟
-    </p>
-    <button class="next" onclick="nextStep()">Birthday Cake 🎂</button>
+
+    <h1>Keep Rising Brother! 🤝</h1>
+
+    <div class="heartBox">
+
+        <p class="message">
+
+        Happy Birthday Talha! 🎉
+
+        My best friend from school life
+        who taught me how to never give up. ❤️
+
+        You have grown so much,
+        and I'm so proud of you.
+
+        This year is yours,
+        chase your dreams harder. 🚀
+
+        May success follow you everywhere.
+
+        Keep rising, my brother! 🌟
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        Birthday Cake 🎂
+
+    </button>
+
 </section>
 
-<!-- STEP 10 -->
-<section class="step theme10">
+
+<!-- STEP 10 CAKE -->
+
+<section class="step">
+
     <div class="emoji">🎂🎉🔥</div>
+
     <h1>19 Years Old! 🥳</h1>
 
-    <div class="cake">
-        <div class="candle c1"><div class="flame"></div></div>
-        <div class="candle c2"><div class="flame"></div></div>
-        <div class="candle c3"><div class="flame"></div></div>
-        <div class="candle c4"><div class="flame"></div></div>
+    <div class="cakeScene">
 
-        <div class="layer one"></div>
-        <div class="layer two"></div>
-        <div class="layer three"></div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
 
-        <div class="age">19 🎂</div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+        <div class="icing"></div>
+
+        <div class="cake">
+
+            <div class="cakeLayer layerBottom"></div>
+
+            <div class="cakeLayer layerTop"></div>
+
+        </div>
+
+        <div class="age">
+            19 🎂
+        </div>
+
     </div>
 
-    <p class="message">
-        🎊 Happy 19th Birthday Talha! 🎊<br>
-        May your new year be filled with happiness, success and unforgettable
-        memories. ❤️✨
-    </p>
+    <div class="heartBox">
 
-    <button class="next" onclick="nextStep()">Next Dua 🤲</button>
+        <p class="message">
+
+        🎊 Happy 19th Birthday Talha! 🎊
+
+        May your new year be filled with happiness,
+        success and unforgettable memories. ❤️✨
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        Next Dua 🤲
+
+    </button>
+
 </section>
+
 
 <!-- STEP 11 -->
-<section class="step theme11">
+
+<section class="step">
+
     <div class="emoji">🤲❤️🌙</div>
+
     <h1>Talha Bhai ❤️</h1>
-    <p class="message">
-        Talha bhai, apko salgrah mubarak ho. 🎂❤️ Ap mere bachpan ke dost aur
-        bhaiyon jese hain. 19vi salgrah ke is khaas moqe par meri taraf se
-        dher sari naik khwahishat. 🤲✨
+
+    <div class="heartBox">
+
+        <p class="message">
+
+        Talha bhai, apko salgrah mubarak ho. 🎂❤️
+
+        Ap mere bachpan ke dost aur bhaiyon jese hain.
+
+        19vi salgrah ke is khaas moqe par
+        meri taraf se dher sari naik khwahishat. 🤲✨
+
         <br><br>
-        Talha, mere school ke behtareen dost, apko 19 saal ka hone par dil ki
-        gehrayion se mubarakbad. ❤️ Allah apke har khawab ko haqeeqat banaye
+
+        Talha, mere school ke behtareen dost,
+        apko 19 saal ka hone par
+        dil ki gehrayion se mubarakbad. ❤️
+
+        Allah apke har khawab ko haqeeqat banaye
         aur apko hamesha salamat rakhe. 🤲✨
-    </p>
-    <button class="next" onclick="nextStep()">More Duas 🤲</button>
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        More Duas 🤲
+
+    </button>
+
 </section>
+
 
 <!-- STEP 12 -->
-<section class="step theme12">
+
+<section class="step">
+
     <div class="emoji">🤲🌙❤️✨</div>
-    <h1>Special Duas For You 🤲</h1>
 
-    <p class="message">
-        🎂 Happy Birthday Talha! Dua hai Allah apko 19vi salgrah par lambi
-        umar, achi sehat aur dher sari khushiyan de. Ameen. 🤲❤️
+    <h1>Special Duas 🤲</h1>
+
+    <div class="heartBox">
+
+        <p class="message">
+
+        🎂 Happy Birthday Talha!
+
+        Dua hai Allah apko 19vi salgrah par
+        lambi umar, achi sehat aur dher sari khushiyan de.
+        Ameen. 🤲❤️
+
         <br><br>
 
-        🌙 Salgrah Mubarak Talha! Allah apki har jaiz dua qabool farmaye,
-        apke rizq me barkat de aur apko har pareshani se mehfooz rakhe.
-        Ameen. 🤲
+        🌙 Salgrah Mubarak Talha!
+
+        Allah apki har jaiz dua qabool farmaye,
+        apke rizq me barkat de
+        aur apko har pareshani se mehfooz rakhe.
+
         <br><br>
 
-        ✨ HBD Talha! Dua hai Allah apko deen o duniya ki har kamyabi de,
-        apke walidain ka fakhar banaye aur apka mustaqbil roshan kare. Ameen.
-        ❤️
+        ✨ HBD Talha!
+
+        Dua hai Allah apko deen o duniya ki har kamyabi de,
+        apke walidain ka fakhar banaye
+        aur apka mustaqbil roshan kare. Ameen.
+
         <br><br>
 
-        🌟 Janam Din Mubarak Talha! Allah apke naseeb achay kare, apko izzat
-        wali zindagi de aur apke har qadam par kamyabi apka muqaddar bane.
-        Ameen. 🤲
-    </p>
+        🌟 Janam Din Mubarak Talha!
 
-    <button class="next" onclick="nextStep()">Next Dua ❤️</button>
+        Allah apke naseeb achay kare,
+        apko izzat wali zindagi de
+        aur apke har qadam par kamyabi
+        apka muqaddar bane.
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        Next Dua ❤️
+
+    </button>
+
 </section>
+
 
 <!-- STEP 13 -->
-<section class="step theme13">
+
+<section class="step">
+
     <div class="emoji">❤️🤲🌟</div>
+
     <h1>One More Prayer 🤲</h1>
 
-    <p class="message">
-        ❤️ Happy Birthday Mere Dost Talha! Allah apko nazar-e-bad se bachaye,
-        apke dil ko sukoon de aur apki zindagi me kabhi gham na aaye.
+    <div class="heartBox">
+
+        <p class="message">
+
+        ❤️ Happy Birthday Mere Dost Talha!
+
+        Allah apko nazar-e-bad se bachaye,
+        apke dil ko sukoon de
+        aur apki zindagi me kabhi gham na aaye.
+
         <br><br>
 
-        🤲 Talha, Salgrah Mubarak! Dua hai Allah apko apne hifz-o-aman me rakhe,
-        apki umar daraz kare aur apko hamesha khush-o-abad rakhe.
+        🤲 Talha, Salgrah Mubarak!
+
+        Dua hai Allah apko apne hifz-o-aman me rakhe,
+        apki umar daraz kare
+        aur apko hamesha khush-o-abad rakhe.
+
         <br><br>
 
-        🌟 HBD Talha! Allah apki mehnat ko kamyabi me badle, apko naik doston
-        ka sath de aur apki har mushkil ko asaan farmaye. Ameen.
+        🌟 HBD Talha!
+
+        Allah apki mehnat ko kamyabi me badle,
+        apko naik doston ka sath de
+        aur apki har mushkil ko asaan farmaye.
+
         <br><br>
 
-        🎉 Salgrah Mubarak Ho Talha! Dua hai is 19ve saal me Allah apko itni
-        khushiyan de ke apka daman kam par jaye aur apki har khwahish poori ho.
+        🎉 Salgrah Mubarak Ho Talha!
+
+        Dua hai is 19ve saal me Allah apko
+        itni khushiyan de ke apka daman kam par jaye
+        aur apki har khwahish poori ho.
+
         <br><br>
 
-        📖 Happy Birthday Talha! Allah apke ilm me izafa kare, apko naik raste
-        par chalaye aur apko duniya o akhirat me kamyab kare.
+        📖 Happy Birthday Talha!
+
+        Allah apke ilm me izafa kare,
+        apko naik raste par chalaye
+        aur apko duniya o akhirat me kamyab kare.
+
         <br><br>
 
-        ❤️ Janam Din Mubarak Ho Piyare Dost Talha! Meri dil se dua hai ke
-        Allah apko hamesha hansta muskurata rakhe, apko kabhi kisi cheez ki
-        kami na ho. Ameen Sum Ameen. 🤲
-    </p>
+        ❤️ Janam Din Mubarak Ho Piyare Dost Talha!
 
-    <button class="next" onclick="nextStep()">Final Surprise 🎉</button>
+        Meri dil se dua hai ke Allah apko
+        hamesha hansta muskurata rakhe,
+        apko kabhi kisi cheez ki kami na ho.
+
+        Ameen Sum Ameen. 🤲❤️
+
+        </p>
+
+    </div>
+
+    <button class="next celebrate"
+            onclick="nextStep()">
+
+        Developer Intro 👨‍💻
+
+    </button>
+
 </section>
 
-<!-- FINAL -->
-<section class="step theme1">
-    <div class="emoji">🎉🎂🎈🎁✨🥳</div>
 
-    <div class="final-title">
-        HAPPY BIRTHDAY<br>
-        TALHA JANU 😘❤️
+<!-- STEP 14 ONLY DEVELOPER INTRO -->
+
+<section class="step">
+
+    <div class="emoji">👨‍💻🔥💻❤️</div>
+
+    <h1>About The Developer</h1>
+
+    <div class="heartBox developer">
+
+        <div class="devName">
+            MR. ASAD UR RAHMAN
+        </div>
+
+        <div class="hacker">
+            TH3-H4CK3R
+        </div>
+
+        <div class="social">
+            📸 Instagram:<br>
+            <strong>vicious_vipers15278</strong>
+        </div>
+
+        <div class="social">
+            🎵 TikTok:<br>
+            <strong>debonair_boy22</strong>
+        </div>
+
     </div>
 
-    <div class="cake">
-        <div class="candle c1"><div class="flame"></div></div>
-        <div class="candle c2"><div class="flame"></div></div>
-        <div class="candle c3"><div class="flame"></div></div>
-        <div class="candle c4"><div class="flame"></div></div>
+    <button class="next celebrate"
+            onclick="nextStep()">
 
-        <div class="layer one"></div>
-        <div class="layer two"></div>
-        <div class="layer three"></div>
+        Final Celebration 🎉
 
-        <div class="age">19 🎂</div>
+    </button>
+
+</section>
+
+
+<!-- STEP 15 FINAL CAKE CUTTING -->
+
+<section class="step">
+
+    <div class="emoji">🎉🎂🥳🎈✨</div>
+
+    <h1>THE FINAL CELEBRATION</h1>
+
+    <div class="cakeScene">
+
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+        <div class="icing"></div>
+
+        <div class="cake">
+
+            <div class="cakeLayer layerBottom"></div>
+
+            <div class="cakeLayer layerTop"></div>
+
+        </div>
+
+        <!-- Animated knife -->
+
+        <div class="knife"></div>
+
+        <div class="age">
+            19 🎂
+        </div>
+
     </div>
 
-    <p class="message">
-        🎊 The celebration has officially begun! 🎊
+    <div class="heartBox">
+
+        <p class="message">
+
+        🎉🎉 HAPPY BIRTHDAY TALHA JANU 😘❤️ 🎉🎉
+
         <br><br>
-        May your 19th year be unforgettable,
-        full of laughter, success, happiness and beautiful memories.
-        ❤️✨
-    </p>
 
-    <div class="dev">
-        FROM DEVELOPER:<br>
-        MR. ASAD ❤️
+        The cake is ready...
+
+        The candles are glowing...
+
+        The celebration has begun! 🎂🕯️🥳
+
+        <br><br>
+
+        May your 19th year be full of
+        happiness, success, laughter,
+        beautiful memories and endless blessings. ❤️🤲
+
+        </p>
+
     </div>
 
-    <div class="thank">
-        Thank You Jani 😘❤️
-    </div>
+    <button class="next celebrate"
+            onclick="megaCelebration()">
+
+        🎉 CELEBRATE 🎉
+
+    </button>
+
+    <br>
+
+    <button class="next"
+            onclick="endWebsite()">
+
+        THE END ❤️
+
+    </button>
+
 </section>
 
 </div>
+
 
 <div class="progress">
-    Surprise <span id="number">1</span> / 14
+    Surprise <span id="number">1</span> / 15
 </div>
+
+
+<!-- END SCREEN -->
+
+<div class="endScreen" id="endScreen">
+
+    <div class="emoji">
+        🎉🎂🎈🥳🎁❤️✨
+    </div>
+
+    <div class="endTitle">
+        THE END
+    </div>
+
+    <div class="endText">
+        Happy Birthday Talha Janu 😘❤️
+        <br><br>
+        Thank you Jani ❤️
+    </div>
+
+</div>
+
 
 <script>
 
+/* =================================
+   STEP SYSTEM
+================================= */
+
 let currentStep = 0;
 
-const steps = document.querySelectorAll(".step");
-const number = document.getElementById("number");
+const steps =
+document.querySelectorAll(".step");
 
-const themes = [
-    "theme1","theme2","theme3","theme4","theme5","theme6",
-    "theme7","theme8","theme9","theme10","theme11","theme12",
-    "theme13","theme1"
-];
+const number =
+document.getElementById("number");
+
 
 function nextStep(){
 
+    celebration();
+
     if(currentStep < steps.length - 1){
 
-        steps[currentStep].classList.remove("active");
+        steps[currentStep]
+        .classList.remove("active");
 
         currentStep++;
 
-        steps[currentStep].classList.add("active");
+        steps[currentStep]
+        .classList.add("active");
 
-        number.textContent = currentStep + 1;
+        number.textContent =
+        currentStep + 1;
 
-        document.body.className = "";
-
-        document.body.style.background =
-            getComputedStyle(steps[currentStep]).background;
-
-        createBurst();
+        window.scrollTo(0,0);
 
     }
 
 }
 
-/* Floating background decorations */
 
-const items = [
-    "🎂","🕯️","🎈","🎉","✨","💖","🥳","🎁","⭐","🍰","🧁","19"
+/* =================================
+   FLOATING BACKGROUND
+================================= */
+
+const floatingItems = [
+
+    "🎂",
+    "🎈",
+    "🕯️",
+    "🎉",
+    "✨",
+    "❤️",
+    "🥳",
+    "🎁",
+    "🍰",
+    "🧁",
+    "⭐",
+    "💖",
+    "19",
+    "HBD",
+    "❤️"
+
 ];
 
-function createBackground(){
 
-    const bg = document.getElementById("background");
+function createFloating(){
+
+    const container =
+    document.getElementById(
+        "floatingBackground"
+    );
+
+    for(let i=0;i<45;i++){
+
+        const item =
+        document.createElement("div");
+
+        item.className="float";
+
+        item.innerText =
+        floatingItems[
+            Math.floor(
+                Math.random() *
+                floatingItems.length
+            )
+        ];
+
+        item.style.left =
+        Math.random()*100+"%";
+
+        item.style.fontSize =
+        (14 + Math.random()*25)+"px";
+
+        item.style.animationDuration =
+        (7 + Math.random()*14)+"s";
+
+        item.style.animationDelay =
+        (-Math.random()*15)+"s";
+
+        container.appendChild(item);
+
+    }
+
+}
+
+createFloating();
+
+
+/* =================================
+   BUTTON CELEBRATION
+================================= */
+
+function celebration(){
+
+    const emojis = [
+
+        "🎉",
+        "🎂",
+        "🎈",
+        "🥳",
+        "✨",
+        "❤️",
+        "🎁",
+        "🔥",
+        "💖",
+        "🍰",
+        "🧁",
+        "⭐"
+
+    ];
+
 
     for(let i=0;i<35;i++){
 
-        const el = document.createElement("div");
+        const item =
+        document.createElement("div");
 
-        el.className = "bg-item";
+        item.innerText =
+        emojis[
+            Math.floor(
+                Math.random() *
+                emojis.length
+            )
+        ];
 
-        el.innerHTML =
-            items[Math.floor(Math.random()*items.length)];
+        item.style.position="fixed";
 
-        el.style.left = Math.random()*100 + "vw";
+        item.style.left="50%";
+        item.style.top="50%";
 
-        el.style.fontSize =
-            (14 + Math.random()*25) + "px";
+        item.style.zIndex="999";
 
-        el.style.animationDuration =
-            (7 + Math.random()*12) + "s";
+        item.style.pointerEvents="none";
 
-        el.style.animationDelay =
-            (-Math.random()*15) + "s";
+        item.style.fontSize =
+        (15 + Math.random()*25)+"px";
 
-        bg.appendChild(el);
-    }
-}
 
-createBackground();
+        document.body.appendChild(item);
 
-/* Celebration burst */
 
-function createBurst(){
+        const x =
+        (Math.random()-.5)*800;
 
-    const emojis = [
-        "🎉","🎂","❤️","🥳","✨","🎈","🎁","🔥","💖"
-    ];
+        const y =
+        (Math.random()-.5)*600;
 
-    for(let i=0;i<20;i++){
 
-        const el = document.createElement("div");
+        item.animate(
 
-        el.style.position="fixed";
-        el.style.left="50%";
-        el.style.top="50%";
-        el.style.zIndex="20";
-        el.style.pointerEvents="none";
-        el.style.fontSize=(18+Math.random()*20)+"px";
-        el.innerHTML=
-            emojis[Math.floor(Math.random()*emojis.length)];
+            [
 
-        document.body.appendChild(el);
+                {
+                    transform:
+                    "translate(-50%,-50%) scale(.2)",
+                    opacity:1
+                },
 
-        const x=(Math.random()-.5)*700;
-        const y=(Math.random()-.5)*500;
+                {
 
-        el.animate([
+                    transform:
+                    `translate(
+                    calc(-50% + ${x}px),
+                    calc(-50% + ${y}px)
+                    )
+                    scale(1.5)
+                    rotate(360deg)`,
+
+                    opacity:0
+
+                }
+
+            ],
+
             {
-                transform:"translate(-50%,-50%) scale(.2)",
-                opacity:1
-            },
-            {
-                transform:
-                    `translate(calc(-50% + ${x}px),calc(-50% + ${y}px)) scale(1.5)`,
-                opacity:0
+
+                duration:
+                1200 + Math.random()*700,
+
+                easing:
+                "cubic-bezier(.2,.8,.3,1)"
+
             }
-        ],{
-            duration:1200,
-            easing:"cubic-bezier(.2,.8,.3,1)"
-        });
 
-        setTimeout(()=>el.remove(),1200);
+        );
+
+
+        setTimeout(
+            ()=>item.remove(),
+            2000
+        );
+
     }
+
 }
 
-/* Start celebration after opening */
 
-document.querySelector(".open-btn").addEventListener("click",()=>{
-    createBurst();
-});
+/* =================================
+   MEGA FINAL CELEBRATION
+================================= */
+
+function megaCelebration(){
+
+    celebration();
+
+    setTimeout(
+        celebration,
+        400
+    );
+
+    setTimeout(
+        celebration,
+        800
+    );
+
+    setTimeout(
+        celebration,
+        1200
+    );
+
+}
+
+
+/* =================================
+   THE END
+================================= */
+
+function endWebsite(){
+
+    megaCelebration();
+
+    setTimeout(()=>{
+
+        document
+        .getElementById("endScreen")
+        .classList.add("show");
+
+    },1000);
+
+}
 
 </script>
 
 </body>
-  </html>
+    </html>
